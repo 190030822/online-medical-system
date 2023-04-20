@@ -17,7 +17,7 @@ if (uuname ==null)
 <title>Insert title here</title>
 </head>
 <body>
-<form   action="/app_requestss/"  method = "post" enctype="multipart/form-data" id="form" class="validate">
+<form   action="/app_requestss/"  method = "post"  id="form" class="validate">
 div class ="left" >
 <img src="img/appoints.jpg"></img>
 </div>
@@ -57,10 +57,10 @@ div class ="left" >
 	                   	   </c:forEach>
 						</select>
   </div>
-  <div class="form-field">
+  <!-- <div class="form-field">
     <label for="full-name">Patient report</label>
     <input type="file" name="file" id="full-name"  />
-  </div>
+  </div> -->
 
   <div class="form-field">
     <label for=""></label>

@@ -7,10 +7,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
  
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
 import com.medical.model.Doctor;
  
 
@@ -19,25 +18,23 @@ import com.medical.model.Doctor;
 public class MailServiceImpl {
  
     @Autowired
-    JavaMailSender mailSender;
+    JavaMailSender getMailSender;
  
-    public void sendEmail(Doctor mail) {
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
+    public void sendEmail(Doctor mail)  {
+        SimpleMailMessage mimeMessage = new SimpleMailMessage();
  
         try {
  
-            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+            // MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
  
-            mimeMessageHelper.setSubject(mail.getMail_subject());
-            mimeMessageHelper.setFrom(new InternetAddress(mail.getMailfrom(), "CREDI HEALTH"));
-            mimeMessageHelper.setTo(mail.getMailed());
-            mimeMessageHelper.setText(mail.getMail_content());
+            mimeMessage.setSubject(mail.getMail_subject());
+            mimeMessage.setFrom("karthik987753@gmail.com");
+            mimeMessage.setTo(mail.getMailed());
+            mimeMessage.setText(mail.getMail_content());
             
-            mailSender.send(mimeMessageHelper.getMimeMessage());
+            getMailSender.send(mimeMessage);
  
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

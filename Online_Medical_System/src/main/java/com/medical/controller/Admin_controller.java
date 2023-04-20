@@ -111,7 +111,10 @@ public class Admin_controller
 	public ModelAndView hospital_list()
 	{
 		List<hospital> hs = hp_repo.findAll();
-		System.out.println(hs.get(0).getHcode());
+		// if (hs.size() == 0) {
+
+		// }
+		// System.out.println(hs.get(0).getHcode());
 		ModelAndView m = new ModelAndView();
 		m.addObject("hs",hs);
 		m.setViewName("hospital_list");

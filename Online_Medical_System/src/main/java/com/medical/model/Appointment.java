@@ -35,10 +35,7 @@ public class Appointment
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Lob
-	private byte[] file;
 
-	
 	public String getConsultdoctor() {
 		return consultdoctor;
 	}
@@ -89,12 +86,6 @@ public class Appointment
 		this.symptoms = symptoms;
 	}
 	
-	public byte[] getFile() {
-		return file;
-	}
-	public void setFile(byte[] file) {
-		this.file = file;
-	}
 	public String getHospname() {
 		return hospname;
 

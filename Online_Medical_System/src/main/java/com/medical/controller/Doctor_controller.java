@@ -145,17 +145,17 @@ public class Doctor_controller
 	}
 	@Autowired
     private ServletContext servletContext;
-	@GetMapping("/download/{pid}/")
-public ResponseEntity downloadFromDB(@PathVariable int pid) {
-	ServletContext servletContext = this.servletContext;
-	Appointment document = pat_repo.findByPid(pid);
-	String fileName = document.getName();
-	String mineType = servletContext.getMimeType(fileName);
-	return ResponseEntity.ok()
-			.contentType(MediaType.parseMediaType(mineType))
-			.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
-			.body(document.getFile());
-}
+// 	@GetMapping("/download/{pid}/")
+// public ResponseEntity downloadFromDB(@PathVariable int pid) {
+// 	ServletContext servletContext = this.servletContext;
+// 	Appointment document = pat_repo.findByPid(pid);
+// 	String fileName = document.getName();
+// 	String mineType = servletContext.getMimeType(fileName);
+// 	return ResponseEntity.ok()
+// 			.contentType(MediaType.parseMediaType(mineType))
+// 			.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+// 			.body(document.getFile());
+// }
 @RequestMapping("/adminpeending")
 	public ModelAndView adminPending(HttpServletRequest request)
 	{
@@ -182,7 +182,7 @@ public ResponseEntity downloadFromDB(@PathVariable int pid) {
 		doctor.setMailfrom(uname);
 		doctor.setMail_subject("Appointment Status");
 		doctor.setMailed(record.getMail());
-		mailservice.sendEmail(doctor);
+		// mailservice.sendEmail(doctor);
 		ModelAndView m = new ModelAndView();
 		m.addObject("message", "Appointment request Processed");
 		String pending = "pending";

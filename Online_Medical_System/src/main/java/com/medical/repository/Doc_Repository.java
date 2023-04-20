@@ -15,7 +15,7 @@ public interface Doc_Repository extends JpaRepository<Doctor,String>
 	List<Doctor>  findBySpecalist(String health_issue);
 
     List<Doctor> findByHcode(int hcode);
-	@Query(value="select * from doctor where hospname =:hospname and specalist =:specalist", nativeQuery=true)
-	List<Doctor> ByDcotor_name(String hospname , String specalist);
+	@Query(value="select * from doctor where specalist =:specalist", nativeQuery=true)
+	List<Doctor> ByDcotor_name(String specalist);
 	
 }

@@ -76,10 +76,10 @@ public class Patient_controller
 	@RequestMapping(value = "/app_request")
 	public ModelAndView App_request(@ModelAttribute("appo") Appointment app,HttpServletResponse response)
 	{
-		
+		System.out.print("cfbcfbdc");
 		System.out.println(app.getHospname());
 		System.out.println(app.getHealth_issue());
-		List<Doctor> dl = doc_repo.ByDcotor_name(app.getHospname(),app.getHealth_issue());
+		List<Doctor> dl = doc_repo.ByDcotor_name(app.getHealth_issue());
 
 		System.out.println("Hello" +dl.get(0).getMailed());
 		ModelAndView m = new ModelAndView();
@@ -92,19 +92,19 @@ public class Patient_controller
 	}
 
 	@RequestMapping(value = "/app_requestss")
-	public ModelAndView App_request(@RequestParam("consultdoctor") String consultdoctor,@RequestParam("file") MultipartFile file,HttpServletRequest request)
+	public ModelAndView App_request(@RequestParam("consultdoctor") String consultdoctor, HttpServletRequest request)
 	{		
 			Appointment app = ant.get(0);
 			ant.remove(0);
 			app.setConsultdoctor(consultdoctor);
-			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-			System.out.println(fileName);
-			app.setName(fileName);
-			try {
-				app.setFile(file.getBytes());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			// String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+			// System.out.println(fileName);
+			// app.setName(fileName);
+			// try {
+			// 	app.setFile(file.getBytes());
+			// } catch (IOException e) {
+			// 	e.printStackTrace();
+			// }
 			String uname = (String) request.getSession().getAttribute("uname");
 			app.setMail(uname);
 			Patient p = repos.findByMail(uname);
