@@ -12,4 +12,4 @@ FROM openjdk:11-jdk-slim
 COPY --from=build /target/Online_Medical_System-0.0.1-SNAPSHOT.jar Online_Medical_System.jar
 # ENV PORT=8080
 EXPOSE 5050
-ENTRYPOINT ["java","-jar","Online_Medical_System.jar"]
+ENTRYPOINT ["java","-jar","/Online_Medical_System-0.0.1-SNAPSHOT.jar"]
