@@ -9,7 +9,7 @@ RUN mvn clean package -DskipTests
 # Package stage
 #
 FROM openjdk:11-jdk-slim
-COPY --from=build /target/demo-0.0.1-SNAPSHOT.jar demo.jar
+COPY --from=build /target/Online_Medical_System-0.0.1-SNAPSHOT.jar Online_Medical_System.jar
 # ENV PORT=8080
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","demo.jar"]
+EXPOSE 5050
+ENTRYPOINT ["java","-jar","Online_Medical_System.jar"]
